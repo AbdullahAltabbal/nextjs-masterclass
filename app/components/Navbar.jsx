@@ -2,8 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import Bean2 from "./Bean2.png"
 
-//test
-
 export default function Navbar() {
   return (
     <nav>
