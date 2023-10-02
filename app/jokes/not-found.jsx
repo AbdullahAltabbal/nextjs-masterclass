@@ -1,6 +1,7 @@
 import Link from "next/link"
 import React from "react"
 
+// This NorFound overwrite the generic one and is special for wrong id
 export default function NotFound() {
   return (
     <main className="text-center">
