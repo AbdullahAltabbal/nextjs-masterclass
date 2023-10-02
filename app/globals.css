@@ -123,10 +123,10 @@ body {
       inline-block 
       text-xs font-semibold;
   }
-  .pill.high {
+  .pill.general {
     @apply bg-red-300 text-red-600;
   }
-  .pill.medium {
+  .pill.programming {
     @apply bg-blue-300 text-blue-600;
   }
   .pill.low {

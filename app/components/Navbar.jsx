@@ -13,7 +13,7 @@ export default function Navbar() {
         placeholder="blur"
       />
       <Link href="/"> Dashboard </Link>
-      <Link href="/tickets"> Tickets </Link>
+      <Link href="/jokes"> Jokes </Link>
     </nav>
   )
 }
