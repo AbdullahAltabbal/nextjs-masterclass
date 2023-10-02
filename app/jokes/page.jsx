@@ -1,5 +1,6 @@
-import React from "react"
+import React, { Suspense } from "react"
 import JokesList from "./JokesList"
+import Loading from "../loading"
 
 export default function Jokes() {
   return (
@@ -10,7 +11,10 @@ export default function Jokes() {
           <small>Currently Jokes</small>
         </p>
       </nav>
-      <JokesList />
+
+      <Suspense fallback={<Loading />}>
+        <JokesList />
+      </Suspense>
     </main>
   )
 }
