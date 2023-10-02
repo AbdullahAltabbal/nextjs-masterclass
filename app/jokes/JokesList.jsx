@@ -4,6 +4,9 @@ async function getJokes() {
   try {
     const res = await fetch("https://official-joke-api.appspot.com/jokes/ten", {
       method: "GET",
+      next: {
+        revalidate: 30,
+      },
     })
     return res.json()
   } catch (error) {
@@ -11,15 +14,6 @@ async function getJokes() {
     return []
   }
 }
-
-/**
- *     {
-        "type": "general",
-        "setup": "What do you call a fashionable lawn statue with an excellent sense of rhythmn?",
-        "punchline": "A metro-gnome",
-        "id": 207
-    },
- */
 
 export default async function JokesList() {
   const jokes = await getJokes()
