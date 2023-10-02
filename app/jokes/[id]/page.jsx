@@ -1,21 +1,26 @@
-import React from "react"
+import { notFound } from "next/navigation"
+
+export const dynamicParams = true
+
+export async function generateStaticParams() {
+  const res = await fetch("https://official-joke-api.appspot.com/jokes/ten")
+
+  const jokes = await res.json()
+
+  return jokes.map((joke) => ({
+    id: joke.id.toString(),
+  }))
+}
 
 async function getJoke(id) {
-  try {
-    const res = await fetch(
-      "https://official-joke-api.appspot.com/jokes/" + id,
-      {
-        method: "GET",
-        next: {
-          revalidate: 60,
-        },
-      }
-    )
-    return res.json()
-  } catch (error) {
-    console.log(error)
-    return []
-  }
+  const res = await fetch("https://official-joke-api.appspot.com/jokes/" + id, {
+    method: "GET",
+    next: {
+      revalidate: 60,
+    },
+  })
+  if (!res.ok) notFound()
+  return res.json()
 }
 
 export default async function JokeDetails({ params }) {

@@ -12,7 +12,7 @@ async function getJokes() {
     return res.json()
   } catch (error) {
     console.log(error)
-    return []
+    return new Array()
   }
 }
 
@@ -27,7 +27,6 @@ export default async function JokesList() {
         <div key={joke.id} className="card">
           <Link href={`jokes/${joke.id}`}>
             <p>{joke.setup}</p>
-            <p>{joke.punchline}</p>
             <div className={`pill ${joke.type}`}>{joke.type} Type</div>
           </Link>
         </div>
