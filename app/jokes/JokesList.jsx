@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 
 async function getJokes() {
@@ -18,17 +19,19 @@ async function getJokes() {
 export default async function JokesList() {
   const jokes = await getJokes()
   return (
-    <>
+    <React.Fragment>
       {jokes.length === 0 && (
         <p className="text.center"> There ist no more Jokes for today! </p>
       )}
-      {jokes.map((t) => (
-        <div key={t.id} className="card">
-          <p>{t.setup}</p>
-          <p>{t.punchline}</p>
-          <div className={`pill ${t.type}`}>{t.type} Type</div>
+      {jokes.map((joke) => (
+        <div key={joke.id} className="card">
+          <Link href={`jokes/${joke.id}`}>
+            <p>{joke.setup}</p>
+            <p>{joke.punchline}</p>
+            <div className={`pill ${joke.type}`}>{joke.type} Type</div>
+          </Link>
         </div>
       ))}
-    </>
+    </React.Fragment>
   )
 }
