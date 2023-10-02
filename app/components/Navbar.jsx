@@ -14,6 +14,7 @@ export default function Navbar() {
       />
       <Link href="/"> Dashboard </Link>
       <Link href="/jokes"> Jokes </Link>
+      <Link href="/jokes/create"> Create </Link>
     </nav>
   )
 }
